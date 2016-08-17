@@ -2,12 +2,34 @@
 <html lang="zh-cmn">
 <head>
 	<meta charset="UTF-8">
-	<title></title>
+	<title>零基础JavaScript编码（一）</title>
 </head>
 <body>
+	<p><a href="http://ife.baidu.com/task/detail?taskId=13">零基础JavaScript编码（一）</a></p>
+
+	<p><label>请输入北京今天空气质量：<input id="aqi-input" type="text"></label></p>
+	<p><button id="button">确认填写</button></p>
+	<div>您输入的值是：<span id="aqi-display">尚无录入</span></div>
+
+
 	<!-- <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script> -->
 	<script>
-
+	(function() {
+		/*
+		在注释下方写下代码
+		给按钮button绑定一个点击事件
+		在事件处理函数中
+		获取aqi-input输入的值，并显示在aqi-display中
+		*/
+		window.onload=function(){
+			var botton=document.getElementById("button");
+			var apiInput=document.getElementById("aqi-input");
+			var apiDisplay=document.getElementById("aqi-display");
+			botton.onclick=function(){
+				apiDisplay.innerHTML=apiInput.value;
+			}
+		}
+	})();
 	</script>
 </body>
 </html>
