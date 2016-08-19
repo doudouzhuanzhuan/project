@@ -9,7 +9,7 @@
 
 	<p><label>请输入北京今天空气质量：<input id="aqi-input" type="text"></label></p>
 	<p><button id="button">确认填写</button></p>
-	<div>您输入的值是：<span id="aqi-display">尚无录入</span></div>
+	<div>您输入的值是：<span id="aqi-display" value="like">尚无 <i>录入</i></span></div>
 
 
 	<!-- <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script> -->
@@ -21,14 +21,81 @@
 		在事件处理函数中
 		获取aqi-input输入的值，并显示在aqi-display中
 		*/
-		window.onload=function(){
-			var botton=document.getElementById("button");
-			var apiInput=document.getElementById("aqi-input");
-			var apiDisplay=document.getElementById("aqi-display");
-			botton.onclick=function(){
-				apiDisplay.innerHTML=apiInput.value;
-			}
-		}
+
+		/**
+		 * 1.基础功能
+		 */
+		// window.onload=function(){
+		// 	var botton=document.getElementById("button");
+		// 	var apiInput=document.getElementById("aqi-input");
+		// 	var apiDisplay=document.getElementById("aqi-display");
+		// 	botton.onclick=function(){
+		// 		apiDisplay.innerHTML=apiInput.value;
+		// 	}
+		// }
+		/**
+		 * /1.
+		 */
+		/**
+		 * 2.组件化，验证，代码格式化
+		 */
+		// function getId(id,idname){
+		// 	if(idname === undefined){
+		// 		return document.getElementById(id);
+		// 	}else{
+		// 		var idname = document.getElementById(id);
+		// 		// 这里会有变量作用域限制？
+		// 	}
+		// }
+
+		// getId("button","botton");
+		// var apiInput = getId("aqi-input");
+		// var apiDisplay = getId("aqi-display");
+		// button.onclick = function(){
+		// 	valToText();
+		// }
+		// function valToText(){
+		// 	var val = parseInt(apiInput.value);
+		// 	if(!isNaN(val) && val>=0 && val<=1000 ){
+		// 		apiDisplay.innerHTML = val;
+		// 	}else{
+		// 		apiDisplay.innerHTML = "请输入0～1000之间的整数";
+		// 	}
+		// }
+		// apiInput.onkeyup = function(event){
+		// 	valToText();
+		// 	console.log(event.keyCode);
+		// }
+		/**
+		 * /2.
+		 * valToText函数与选择ID对象有很强的依赖关系，必须先定义再使用
+		 * 其实不用window.onload
+		 * event
+		 *
+		 * 可以再改进的地方，输入简直对的方式创建ID对象，自动判断ID对象和class对象并自动选择
+		 * 取代onclick属性，因为再次添加执行函数会覆盖，
+		 * 正则验证
+		 * http://www.oschina.net/question/54100_25614
+		 * textContent、innerHTML、的区别
+		 * 感觉没有必要验证xss攻击，因为对其进行了转换为数值，<>什么的都被转化了
+		 *
+		 */
+
+		 /**
+		  * 3.去除首尾空格（兼容IE8），取代onclick事件，AQI范围从0到500百科(没有查到资料，按整数匹配)，
+		  * 使用textContent代替innerHTML更符合用意（转移文本而非HTML代码）
+		  * parseInt()会忽略字符串首位空白符，且解析到非数字字符时自动截断（会返回NaN)
+		  */
+		 function change(){
+		 	var inputvalue=parseInt(document.getElementById("aqi-input").value);
+		 	document.getElementById("aqi-display").textContent=(inputvalue<=500&&inputvalue>=0)?inputvalue:"请输入0～500之间的整数";
+		 }
+		 var bottom=document.getElementById("button");
+		 if (bottom.addEventListener) {
+		   bottom.addEventListener('click', change, false);
+		 } else if (bottom.attachEvent)  {
+		   bottom.attachEvent('onclick', change);
+		 }
 	})();
 	</script>
 </body>
