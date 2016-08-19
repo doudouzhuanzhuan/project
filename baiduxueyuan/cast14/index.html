@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-cmn">
+<head>
+	<meta charset="UTF-8">
+	<title>零基础JavaScript编码（二</title>
+</head>
+<body>
+	<a href="http://ife.baidu.com/task/detail?taskId=14">零基础JavaScript编码（二</a>
+	<h3>污染城市列表</h3>
+	<ul id="aqi-list">
+		<!--
+		<li>第一名：福州（样例），10</li>
+		<li>第二名：福州（样例），10</li> -->
+	</ul>
+	<script type="text/javascript">
+	var aqiData = [
+		["北京", 90],
+		["上海", 50],
+		["福州", 10],
+		["广州", 50],
+		["成都", 90],
+		["西安", 100]
+	];
+
+	(function () {
+
+		/*
+		在注释下方编写代码
+		遍历读取aqiData中各个城市的数据
+		将空气质量指数大于60的城市显示到aqi-list的列表中
+		*/
+		/**
+		 * 1.基础版本
+		 */
+		list=document.getElementById("aqi-list");
+		aqiData.sort(function(oldvar,newvar){
+			return newvar[1]-oldvar[1];
+		});
+		listCon="";
+		index=1;
+		for (var name in aqiData){
+			listCon+="<li>第"+index+"名："+aqiData[name][0]+":"+aqiData[name][1]+"</li>\n";
+			index++;
+		}
+		list.innerHTML=listCon;
+		console.log(listCon);
+		/**
+		 * /1.基础版本
+		 * 可以根据污染等级分配不同的样式
+		 * 尝试创建对象并插入对象，第？名改为文字
+		 * 接触过滤，遍历forEach
+		 */
+	})();
+	</script>
+</body>
+</html>
