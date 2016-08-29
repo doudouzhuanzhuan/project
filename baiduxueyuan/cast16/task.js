@@ -17,23 +17,28 @@ if (!String.prototype.trim) {
     return this.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, '');
   };
 }
+function addEventListener(obj,type,fn,boolean){
+	if(obj.addEventListener){
+		obj.addEventListener(type,fn,boolean);
+	}else if(obj.attachEvent){
+		obj.attachEvent(type,fn);
+	}
+}
 function addAqiData() {
-	var cityname=document.getElementById("aqi-city-input").value;
-	var value=document.getElementById("aqi-value-input").value;
-	cityname=cityname.trim();
-	value=value.trim();
+	var cityname=document.getElementById("aqi-city-input").value.trim();
+	var value=document.getElementById("aqi-value-input").value.trim();
 	var attr=[];
 
 	if(!/^[a-zA-Z\u4E00-\u9FA5]+$/.test(cityname)){//中英文
 		console.log(cityname);
 		return false;
 	}
-	if(!/^[0-9]+$/.test(value)){//中英文
+	if(!/^\d+$/.test(value)){//中英文
 		console.log(value);
 		return false;
 	}
 	aqiData[cityname]=value;//避免了重复命名
-	console.log(aqiData);
+	//console.log(aqiData);
 }
 
 /**
@@ -46,8 +51,9 @@ function renderAqiList() {
 	for(var name in aqiData){
 		tr+=
 			"<tr><td>"+name+"</td><td>"+
-			aqiData[name]+"</td><td><button>删除</button></td></tr>"
-		console.log(tr);
+			aqiData[name]+"</td><td><button data-name='"+
+			name+"'>删除</button></td></tr>"
+		//console.log(tr);
 	}
 	table.innerHTML=tr;
 }
@@ -67,10 +73,13 @@ function addBtnHandle() {
  */
 function delBtnHandle(event) {
 	// do sth.
-	var name=event.target.parentNode.parentNode.getElementsByTagName("td")[0].innerHTML;
-	console.log(name);
-	delete aqiData[name];
-	renderAqiList();
+	if(event.target.tagName.toLowerCase()=="button"){
+		//var name=event.target.parentNode.parentNode.getElementsByTagName("td")[0].innerHTML;
+		var name=event.target.getAttribute("data-name");
+		//console.log(name);
+		delete aqiData[name];
+		renderAqiList();
+	}
 }
 
 function init() {
@@ -78,7 +87,14 @@ function init() {
 	document.getElementById("add-btn").onclick=addBtnHandle;
 
 	// 想办法给aqi-table中的所有删除按钮绑定事件，触发delBtnHandle函数
-	document.getElementById("aqi-table").addEventListener("click",delBtnHandle,false);
+
+	addEventListener(document.getElementById("aqi-table"),"click",delBtnHandle,false);
 }
 
 init();
+
+/**
+ * dataset IE11+
+ * 通过使用自定义属性的方式更能简化操作
+ */
+
