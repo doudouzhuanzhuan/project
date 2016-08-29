@@ -21,6 +21,7 @@
 		["成都", 90],
 		["西安", 100]
 	];
+	var item=["一","二","三","四","五","六","七","八","九","十"];
 
 	(function () {
 
@@ -32,23 +33,54 @@
 		/**
 		 * 1.基础版本
 		 */
-		list=document.getElementById("aqi-list");
-		aqiData.sort(function(oldvar,newvar){
-			return newvar[1]-oldvar[1];
-		});
-		listCon="";
-		index=1;
-		for (var name in aqiData){
-			listCon+="<li>第"+index+"名："+aqiData[name][0]+":"+aqiData[name][1]+"</li>\n";
-			index++;
-		}
-		list.innerHTML=listCon;
-		console.log(listCon);
+		// list=document.getElementById("aqi-list");
+		// aqiData.sort(function(oldvar,newvar){
+		// 	return newvar[1]-oldvar[1];
+		// });
+		// listCon="";
+		// index=0;
+		// for (var name in aqiData){
+		// 	if(aqiData[name][1]>60){
+		// 		listCon+="<li>第"+item[index]+"名："+aqiData[name][0]+":"+aqiData[name][1]+"</li>\n";
+		// 	}else{
+		// 		listCon+="<li style='color:gray;'>第"+item[index]+"名："+aqiData[name][0]+":"+aqiData[name][1]+"</li>\n";
+		// 	}
+		// 	index++;
+		// }
+		// list.innerHTML=listCon;
+		// console.log(listCon);
 		/**
 		 * /1.基础版本
 		 * 可以根据污染等级分配不同的样式
 		 * 尝试创建对象并插入对象，第？名改为文字
 		 * 接触过滤，遍历forEach
+		 * 创建元素createElement、添加子元素appendChild、创建文本节点createTextNode,但是每次插入都要访问DOM，影响性能，所以不采用
+		 */
+		/**
+		 * 2.forEach版
+		 * 减少DOM访问，故另创建一个ul，使用forEach，创建元素，插入到DOM
+		 */
+		aqiData.sort(function(a,b){
+			return b[1]-a[1];
+		});
+		var listDOM=document.createElement("ul");
+
+		aqiData.forEach(function(element,index){
+			var liText=document.createTextNode("第"+item[index]+"名："+element[0]+","+element[1]);
+			var liDOM=document.createElement("li");
+			if(element[1]>60){
+				liDOM.setAttribute("style","color:orange");
+			}
+			liDOM.appendChild(liText);
+			listDOM.appendChild(liDOM);
+			console.log(listDOM.innerHTML);
+		})
+		var titleH3=document.getElementsByTagName("h3")[0];
+
+		document.body.insertBefore(listDOM,titleH3.nextSibling);
+		/**
+		 * /2.forEach版
+		 * 虽然可以用forEach循环数组，但是他的功能主要是对数组的每一项执行函数，有点名不符实
 		 */
 	})();
 	</script>
