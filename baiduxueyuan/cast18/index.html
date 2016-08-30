@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-cmn">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		p{display: inline-block;color: #fff;background: #f00;padding: 10px 12px;margin: auto 2px;}
+	</style>
+</head>
+<body>
+	<div>
+		<input type="text" name="sum">
+		<button id="leftin">左侧如</button>
+		<button id="rightin">右侧入</button>
+		<button id="leftout">左侧出</button>
+		<button id="rightout">右侧出</button>
+	</div>
+	<div id="content"><p>1</p></div>
+	<script>
+	function getId(id){
+		return document.getElementById(id);
+	}
+	var leftin=getId("leftin"),
+		rightin=getId("rightin"),
+		leftout=getId("leftout"),
+		rightout=getId("rightout"),
+		content=getId("content");
+	leftin.onclick=function(){
+		var value=document.getElementsByName("sum")[0].value;
+		if(isInt(value)){
+			var p_tag=document.createElement("p");
+			p_tag.innerHTML=value;
+			content.insertBefore(p_tag,content.getElementsByTagName("p")[0]);
+		}
+	}
+	rightin.onclick=function(){
+		var value=document.getElementsByName("sum")[0].value;
+		if(isInt(value)){
+			var p_tag=document.createElement("p");
+			p_tag.innerHTML=value;
+			content.appendChild(p_tag);
+		}
+	}
+	rightout.onclick=function(){
+		var old_p=content.getElementsByTagName("p");
+		content.removeChild(old_p[old_p.length-1]);
+	}
+	leftout.onclick=function(){
+		var old_p=content.getElementsByTagName("p");
+		content.removeChild(old_p[0]);
+	}
+	function isInt(value){
+		if(!/^\d+$/.test(value)){
+			console.log("请输入数字");
+			return false;
+		}else{
+			return true;
+		}
+	}
+
+
+	</script>
+</body>
+</html>
