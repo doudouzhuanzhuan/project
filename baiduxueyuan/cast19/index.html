@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-cmn">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		#content{
+			box-sizing: border-box;
+			/*outline: 1px solid #ffad09;*/
+			background: #fafaf0;
+			font-size: 0;
+			height: 320px;
+			padding: 0;
+			margin-top: 50px;
+		}
+		p{
+			margin: 0;
+			display: inline-block;
+			color: #ffffff;
+			font-size: 12px;
+			text-align: center;
+			vertical-align: bottom;
+			padding: 10px 0;
+			width: 29px;
+			border-right: 1px solid #fff;
+			background: #ff7a0e;
+			cursor: pointer;
+		}
+		p:hover{
+			background: #ff3d00;
+		}
+	</style>
+</head>
+<body>
+	<div id="from">
+		<input type="text" name="sum">
+		<button id="leftin">左侧如</button>
+		<button id="rightin">右侧入</button>
+		<button id="leftout">左侧出</button>
+		<button id="rightout">右侧出</button>
+		<button id="random">随机数组(60)</button>
+		<button id="sort">冒泡排序</button>
+	</div>
+	<div id="content"></div>
+	<script src="object.js"></script>
+</body>
+</html>
