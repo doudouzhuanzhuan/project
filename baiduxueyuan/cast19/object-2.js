@@ -78,22 +78,24 @@ var obj={
     },
     sort2:function(length){//剩余长度
         var index=0;//当前比较
+        var max=0;//默认最大为数组第一个
         var loop=setInterval(function(){
-            if(length==2){
+            if(length==1){
                 clearInterval(loop);
             }
-            if(length-1==index){
-                length--;
+            if(length==index){
+                var b=obj.str[length-1];
+                obj.str[length-1]=obj.str[max];
+                obj.str[max]=b;
+                --length;
                 index=0;
             }
-            if(obj.str[index]>obj.str[length-1]){
-                var b=obj.str[length-1];
-                obj.str[length-1]=obj.str[index];
-                obj.str[index]=b;
+            if(obj.str[index]>obj.str[max]){
+                max=index;
             }
-            obj.change(length-1,index);
+            obj.change(index,max);
             index++;
-        },20)
+        },10)
     },
     radombox:function(){
         for(var i=0;i<60;i++){
