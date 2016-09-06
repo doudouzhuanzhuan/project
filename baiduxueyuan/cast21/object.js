@@ -30,6 +30,17 @@
  *      保存数组
  *      验证方法
  *      初始化
+ * 说明:
+ *      目前只支持IE9+
+ *      需要改进的地方是监听函数可以放在原型函数中,用来节省内存,但必要性不大
+ * 不足:
+ *      不知道如何向监听函数中传递参数
+ *      如果数据量大那么鼠标移出渲染方式性能太低,直接在元素上操作即可
+ *
+ */
+
+/**
+ * 通用函数
  */
 function addListen(obj,fun,type,boolean){
     if(obj.addEventListener){
@@ -41,45 +52,69 @@ function addListen(obj,fun,type,boolean){
     }
 }
 function $(select){return document.querySelector(select);}
+/**
+ * /通用函数
+ */
 var viewCenter=(function(){
     function main(type){
-        var _this=this;
+        var _this=this;//供监听函数使用
         this.arr=[];
-        this.init();
         if(type=="single"){
             this.center=function(event){
                 var keycode=event.keyCode;
                 if(keycode==32||keycode==188||keycode==13){
                     event.preventDefault();
-                    var item=this.value.match(/[^,\s]+/)?this.value.match(/[^,\s]+/)[0]:false;//
+                    var item=this.value.match(/[^,\s]+/);
                     if(item){
-                        _this.setArr(item);
+                        _this.setArr(item[0]);
                     }
                     _this.createbox($(".tagcon"));
                     this.value="";
                 }
             }
             addListen($("#tag"),this.center,"keydown",false);
+            var boxwrap=$(".tagcon");
         }else if(type=="some"){
             this.center=function(){
                 var value=$("#like").value;
                 var arr=value.match(/[0-9a-zA-Z\u4e00-\u9fa5]+/g);
-                var fillerarr=[];//过滤重复
+                var filler_arr=[];//过滤重复
                 for(var name in arr){
-                    if(fillerarr.indexOf(arr[name])===-1){
-                        fillerarr.push(arr[name]);
+                    if(filler_arr.indexOf(arr[name])===-1){
+                        filler_arr.push(arr[name]);
                     }
                 }
-                if(fillerarr.length>0){
-                    _this.setArr(fillerarr);
+                if(filler_arr.length>0){
+                    _this.setArr(filler_arr);
                     _this.createbox($(".likecon"));
                 }
                 $("#like").value="";
             }
             addListen($("#ok"),this.center,"click",false);
+            var boxwrap=$(".likecon")
         }
+        /**
+         * 监听函数
+         */
+        addListen(boxwrap,function(){
+            if(event.target.tagName.toLowerCase()=="p"){
+                //如何向监听函数中传入参数?
+                _this.arr.splice(_this.arr.indexOf(event.target.innerHTML),1);
+                _this.createbox(this);
+        }
+        },"click",false);
+        addListen(boxwrap,this.mouseover,"mouseover",false);
+        addListen(boxwrap,function(){
+            if(event.target.tagName.toLowerCase()=="p"){
+                _this.createbox(this);
+            }
+        },"mouseout",false);
+        /**
+         * /监听函数
+         */
     }
     main.prototype={
+        /** 处理数组 **/
         setArr:function(item){
             if(this.arr.indexOf(item)===-1){//IE9+
                 this.arr=this.arr.concat(item);
@@ -88,33 +123,18 @@ var viewCenter=(function(){
                 this.arr=this.arr.slice(-10);
             }
         },
+        /** 创建元素块 **/
         createbox:function(obj){
             var str="";
             for(var name in this.arr){
-                str+="<p>"+this.arr[name]+"</p>\b";
+                str+="<p>"+this.arr[name]+"</p>";
             }
             obj.innerHTML=str;
         },
-        init:function(){//原型初始化
-            addListen($(".tagcon"),this.removebox,"click",false);
-            addListen($(".tagcon"),this.mouseover,"mouseover",false);
-            addListen($(".tagcon"),this.mouseout,"mouseout",false);
-        },
-        removebox:function(event){
-            if(event.target.tagName.toLowerCase()=="p"){
-                //如何向监听函数中传入参数?
-                tag.arr.splice(tag.arr.indexOf(event.target.innerHTML),1);
-                tag.createbox($(".tagcon"));
-            }
-        },
-        mouseover:function(event){
+        /** 鼠标移出 **/
+        mouseover:function(){
             if(event.target.tagName.toLowerCase()=="p"){
                 event.target.innerHTML="删除:"+event.target.innerHTML;
-            }
-        },
-        mouseout:function(){
-            if(event.target.tagName.toLowerCase()=="p"){
-                tag.createbox($(".tagcon"));
             }
         }
     }

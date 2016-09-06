@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #wrap{
+            background:#aad;
+            height:300px;
+            width:300px;
+        }
+        #box{
+            background:#dda;
+            width:150px;
+            height:150px;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div id="box"></div>
+    </div>
+    <script>
+        //检测为什么有时候点击会执行两次函数
+        var box=document.getElementById("box");
+        var wrap=document.getElementById("wrap");
+        wrap.addEventListener("click",function(event){
+            console.log(event.target);
+        },false)
+    </script>
+</body>
+</html>
