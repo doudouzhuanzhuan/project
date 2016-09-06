@@ -4,58 +4,22 @@
 	<meta charset="UTF-8">
 	<title></title>
 	<style>
-		#content{
-			box-sizing: border-box;
-			/*outline: 1px solid #ffad09;*/
-			background: #fafaf0;
-			font-size: 0;
-			height: 320px;
-			padding: 0;
-			margin-top: 50px;
-		}
-		#content span{
-			color: #000;
-			background: #ffff00;
-		}
-		p{
-			margin: 0;
-			display: inline-block;
-			color: #ffffff;
-			font-size: 12px;
-			text-align: center;
-			vertical-align: bottom;
-			padding: 10px 5px;
-			/*width: 29px;*/
-			border-right: 1px solid #fff;
-			background: #ff7a0e;
-			cursor: pointer;
-		}
-		p:hover{
-			background: #ff3d00;
-		}
-		#text{
-			width: 300px;
-			height: 160px;
-			display: inline-block;
-			padding: 16px;
-			vertical-align: bottom;
-			resize: none;
-		}
+		p{display: inline-block;color: #ffffff;background: #f00;padding: 10px 12px;margin: auto 2px;}
+		span{background: #ffff00;color:#222222;}
+		textarea{resize: none;padding: 10px;height: 300px;width: 200px;}
 	</style>
 </head>
 <body>
 	<div id="from">
-		<textarea id="text"></textarea>
-		<button id="leftin">左侧如</button>
-		<button id="rightin">右侧入</button>
-		<button id="leftout">左侧出</button>
-		<button id="rightout">右侧出</button>
-		<button id="random">随机数组(60)</button>
-		<button id="sort">冒泡排序</button>
-		<input type="text" id="searchtext">
+		<textarea name="text" id="text"></textarea>
+		<button id="push">左侧入</button>
+		<input id="search" type="text" name="sum">
 		<button id="search">查询</button>
 	</div>
-	<div id="content"></div>
-	<script src="object-1.js"></script>
+	<div id="content"><p>1</p></div>
+	<!--<script src="script.js"></script>-->
+	<script src="object.js"></script>
+	<!--http://ife.baidu.com/review/detail?workId=2592-->
+	<!--分别是基础版,面向对象版,原型与模块版-->
 </body>
 </html>

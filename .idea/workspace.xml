@@ -2,14 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e0b1bbb0-c1f7-44a4-b2c6-006808441da8" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/baiduxueyuan/cast19/object-2.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/baiduxueyuan/cast20/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/baiduxueyuan/cast20/object-1.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/baiduxueyuan/readme.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/baiduxueyuan/cast20/object.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/baiduxueyuan/cast21/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/baiduxueyuan/cast21/object.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/baiduxueyuan/cast21/read.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/baiduxueyuan/cast20/object-1.js" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/baiduxueyuan/cast19/index.html" afterPath="$PROJECT_DIR$/baiduxueyuan/cast19/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/baiduxueyuan/cast19/object-1.js" afterPath="$PROJECT_DIR$/baiduxueyuan/cast19/object-1.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/baiduxueyuan/cast20/index.html" afterPath="$PROJECT_DIR$/baiduxueyuan/cast20/index.html" />
     </list>
     <ignored path="project.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,21 +32,37 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/baiduxueyuan/cast20/index.html">
+        <entry file="file://$PROJECT_DIR$/baiduxueyuan/cast21/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="487">
-              <caret line="58" column="39" selection-start-line="58" selection-start-column="39" selection-end-line="58" selection-end-column="39" />
+            <state relative-caret-position="113">
+              <caret line="8" column="24" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="object-1.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/baiduxueyuan/cast20/object-1.js">
+      <file leaf-file-name="object.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/baiduxueyuan/cast21/object.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="47" column="22" selection-start-line="47" selection-start-column="22" selection-end-line="47" selection-end-column="22" />
-              <folding />
+            <state relative-caret-position="459">
+              <caret line="27" column="11" selection-start-line="27" selection-start-column="11" selection-end-line="27" selection-end-column="11" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="read.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/baiduxueyuan/cast21/read.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="454">
+              <caret line="107" column="50" selection-start-line="107" selection-start-column="50" selection-end-line="107" selection-end-column="50" />
+              <folding>
+                <element signature="e#741#1089#0" expanded="false" />
+                <element signature="e#1757#2094#0" expanded="false" />
+                <element signature="e#2220#2330#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -82,7 +97,11 @@
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/baiduxueyuan/readme.md" />
         <option value="$PROJECT_DIR$/baiduxueyuan/cast20/object-1.js" />
+        <option value="$PROJECT_DIR$/baiduxueyuan/cast20/object.js" />
         <option value="$PROJECT_DIR$/baiduxueyuan/cast20/index.html" />
+        <option value="$PROJECT_DIR$/baiduxueyuan/cast21/read.js" />
+        <option value="$PROJECT_DIR$/baiduxueyuan/cast21/index.html" />
+        <option value="$PROJECT_DIR$/baiduxueyuan/cast21/object.js" />
       </list>
     </option>
   </component>
@@ -200,6 +219,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="cast21" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="baiduxueyuan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="cast20" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -221,6 +258,7 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/baiduxueyuan" />
+      <recent name="$PROJECT_DIR$/baiduxueyuan/cast20" />
       <recent name="$PROJECT_DIR$/baiduxueyuan/cast19" />
     </key>
   </component>
@@ -310,12 +348,12 @@
       <workItem from="1472692363272" duration="25561000" />
       <workItem from="1472796112722" duration="214000" />
       <workItem from="1473039512427" duration="442000" />
-      <workItem from="1473040439218" duration="10215000" />
+      <workItem from="1473040439218" duration="32294000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="54185000" />
+    <option name="totallyTimeSpent" value="76264000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -360,7 +398,16 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/baiduxueyuan/cast21/read.js</url>
+          <line>80</line>
+          <properties />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
@@ -621,19 +668,57 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/baiduxueyuan/cast20/index.html">
+    <entry file="file://$PROJECT_DIR$/baiduxueyuan/cast20/object-1.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="487">
-          <caret line="58" column="39" selection-start-line="58" selection-start-column="39" selection-end-line="58" selection-end-column="39" />
+        <state relative-caret-position="234">
+          <caret line="68" column="0" selection-start-line="68" selection-start-column="0" selection-end-line="80" selection-end-column="3" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/baiduxueyuan/cast20/object-1.js">
+    <entry file="file://$PROJECT_DIR$/baiduxueyuan/cast20/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="47" column="22" selection-start-line="47" selection-start-column="22" selection-end-line="47" selection-end-column="22" />
+        <state relative-caret-position="408">
+          <caret line="24" column="7" selection-start-line="24" selection-start-column="7" selection-end-line="24" selection-end-column="7" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/baiduxueyuan/cast20/object.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="29" column="44" selection-start-line="29" selection-start-column="44" selection-end-line="29" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/baiduxueyuan/cast21/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="113">
+          <caret line="8" column="24" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/baiduxueyuan/cast21/read.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="454">
+          <caret line="107" column="50" selection-start-line="107" selection-start-column="50" selection-end-line="107" selection-end-column="50" />
+          <folding>
+            <element signature="e#741#1089#0" expanded="false" />
+            <element signature="e#1757#2094#0" expanded="false" />
+            <element signature="e#2220#2330#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/baiduxueyuan/cast21/object.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="11" selection-start-line="27" selection-start-column="11" selection-end-line="27" selection-end-column="11" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
