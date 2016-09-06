@@ -21,7 +21,7 @@
 /**
  * 使用面向对象的原型进行创建,把通用的方法放在原型函数中,各自的属性和方法放在构造函数中
  * 原型函数
- *      重复tag自动删除
+ *      重复tag自动删除、鼠标指向,鼠标移开
  *      允许10个Tag,多余10个把前面的删掉
  *      鼠标停在tag上增加删除二字
  *      为tag做处理
@@ -31,82 +31,94 @@
  *      验证方法
  *      初始化
  */
-var viewCenter=(function(){
-    function tagFun(obj,text,type){
-        type?this.init():this.init("input");
+function addListen(obj,fun,type,boolean){
+    if(obj.addEventListener){
+        obj.addEventListener(type,fun,boolean);
+    }else if(obj.attachEvent){
+        obj.attachEvent("on"+type,fun);
+    }else{
+        obj["on"+tyoe]=fun;
     }
-    tagFun.prototype={
-        atr:[],
-        init:function(type){
-            var _this=this;
-            if(type=="input"){
-                var tag=document.querySelector("#tag");
-                tag.addEventListener("keydown",function(event){
-                    var keycode=event.keyCode;
-                    if(keycode===13||keycode===188||keycode===32){
-                        var value=tag.value.match(/[^\s,]+/)[0];
-                        if(!_this.repeat(value)){
-                            _this.atr.push(value);
-                        }else{
-                            console.log("center repeat!");
-                        }
-                        this.value="";
-                        _this.createbox();
+}
+function $(select){return document.querySelector(select);}
+var viewCenter=(function(){
+    function main(type){
+        var _this=this;
+        this.arr=[];
+        this.init();
+        if(type=="single"){
+            this.center=function(event){
+                var keycode=event.keyCode;
+                if(keycode==32||keycode==188||keycode==13){
+                    event.preventDefault();
+                    var item=this.value.match(/[^,\s]+/)?this.value.match(/[^,\s]+/)[0]:false;//
+                    if(item){
+                        _this.setArr(item);
                     }
-                },false)
-                var tagconobj=document.querySelector(".tagcon");
-                tagconobj.addEventListener("click",function(event){
-                    _this.remove(event.target,_this);
-                },false);
-                // tagconobj.addEventListener("mouseover",function(event){
-                //     _this.mouseover(event.target,_this);
-                //
-                // },false)
-                // tagconobj.addEventListener("mouseout",function(event){
-                //     _this.mouseout(event.target,_this);
-                // },true)
-            }
-        },
-        mouseover:function(event,_this){
-            if(event.tagName.toLocaleLowerCase()=="p") {
-                _this.createbox(event.getAttribute("attr-item"));
-            }
-        },
-        mouseout:function(event,_this){
-            //if(event.tagName.toLocaleLowerCase()=="p") {
-                //alert("dd");
-                _this.createbox();
-            //}
-        },
-        remove:function(event,_this){
-            if(event.tagName.toLocaleLowerCase()=="p"){
-                _this.atr.splice(event.getAttribute("attr-item"),1);
-                _this.createbox();
-            }
-        },
-        repeat:function(value){
-            for(var name in this.atr){
-                if(this.atr[name]===value){
-                    return true;
+                    _this.createbox($(".tagcon"));
+                    this.value="";
                 }
             }
-        },
-        createbox:function(index){
-            var tagconobj=document.querySelector(".tagcon");
-            var tagtext="";
-            for(var name in this.atr){
-                if(index===name){
-                    tagtext+="<p attr-item='"+name+"'>"+"删除:"+this.atr[name]+"</p>";
-                    console.log(index);
-                }else{
-                    tagtext+="<p attr-item='"+name+"'>"+this.atr[name]+"</p>";
+            addListen($("#tag"),this.center,"keydown",false);
+        }else if(type=="some"){
+            this.center=function(){
+                var value=$("#like").value;
+                var arr=value.match(/[0-9a-zA-Z\u4e00-\u9fa5]+/g);
+                var fillerarr=[];//过滤重复
+                for(var name in arr){
+                    if(fillerarr.indexOf(arr[name])===-1){
+                        fillerarr.push(arr[name]);
+                    }
                 }
+                if(fillerarr.length>0){
+                    _this.setArr(fillerarr);
+                    _this.createbox($(".likecon"));
+                }
+                $("#like").value="";
             }
-            tagconobj.innerHTML=tagtext;
+            addListen($("#ok"),this.center,"click",false);
         }
     }
-
-    return tagFun;
-
+    main.prototype={
+        setArr:function(item){
+            if(this.arr.indexOf(item)===-1){//IE9+
+                this.arr=this.arr.concat(item);
+            }
+            if(this.arr.length>10){
+                this.arr=this.arr.slice(-10);
+            }
+        },
+        createbox:function(obj){
+            var str="";
+            for(var name in this.arr){
+                str+="<p>"+this.arr[name]+"</p>\b";
+            }
+            obj.innerHTML=str;
+        },
+        init:function(){//原型初始化
+            addListen($(".tagcon"),this.removebox,"click",false);
+            addListen($(".tagcon"),this.mouseover,"mouseover",false);
+            addListen($(".tagcon"),this.mouseout,"mouseout",false);
+        },
+        removebox:function(event){
+            if(event.target.tagName.toLowerCase()=="p"){
+                //如何向监听函数中传入参数?
+                tag.arr.splice(tag.arr.indexOf(event.target.innerHTML),1);
+                tag.createbox($(".tagcon"));
+            }
+        },
+        mouseover:function(event){
+            if(event.target.tagName.toLowerCase()=="p"){
+                event.target.innerHTML="删除:"+event.target.innerHTML;
+            }
+        },
+        mouseout:function(){
+            if(event.target.tagName.toLowerCase()=="p"){
+                tag.createbox($(".tagcon"));
+            }
+        }
+    }
+    return main;//viewCenter只作为构造函数存在,主逻辑在init内
 })();
-var input=new viewCenter("#tag",".tagcon");
+var tag=new viewCenter("single");
+var like=new viewCenter("some");
