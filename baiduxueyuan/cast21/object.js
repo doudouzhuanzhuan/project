@@ -35,7 +35,7 @@
  *      需要改进的地方是监听函数可以放在原型函数中,用来节省内存,但必要性不大
  * 不足:
  *      不知道如何向监听函数中传递参数
- *      如果数据量大那么鼠标移出渲染方式性能太低,直接在元素上操作即可
+ *      如果数据量大那么鼠标移出渲染方式性能太低,直接在元素上操作即可(9月7日解决)
  *
  */
 
@@ -48,7 +48,7 @@ function addListen(obj,fun,type,boolean){
     }else if(obj.attachEvent){
         obj.attachEvent("on"+type,fun);
     }else{
-        obj["on"+tyoe]=fun;
+        obj["on"+type]=fun;
     }
 }
 function $(select){return document.querySelector(select);}
@@ -104,11 +104,7 @@ var viewCenter=(function(){
         }
         },"click",false);
         addListen(boxwrap,this.mouseover,"mouseover",false);
-        addListen(boxwrap,function(){
-            if(event.target.tagName.toLowerCase()=="p"){
-                _this.createbox(this);
-            }
-        },"mouseout",false);
+        addListen(boxwrap,this.mouseout,"mouseout",false);
         /**
          * /监听函数
          */
@@ -131,10 +127,16 @@ var viewCenter=(function(){
             }
             obj.innerHTML=str;
         },
-        /** 鼠标移出 **/
+        /** 鼠标移入 **/
         mouseover:function(){
             if(event.target.tagName.toLowerCase()=="p"){
                 event.target.innerHTML="删除:"+event.target.innerHTML;
+            }
+        },
+        /** 鼠标移出 **/
+        mouseout:function(){
+            if(event.target.tagName.toLowerCase()=="p"){
+                event.target.innerHTML=event.target.innerHTML.replace(/^(删除:)+/,"");
             }
         }
     }

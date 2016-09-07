@@ -3,7 +3,9 @@ var content=document.getElementById("content"),
 from.addEventListener("click",function(event){
     var _this=event.target;
     var id=_this.getAttribute("id");
+    //在创建之前必须要有一个p标签,否则产生错误
     var old_p=content.getElementsByTagName("p");
+    console.log(old_p);
     if(id=="leftin"||id=="rightin"){//isInt(value)
         var value=document.getElementsByName("sum")[0].value;
         if(/^\d+$/.test(value)){

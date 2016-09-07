@@ -33,7 +33,7 @@ function addAqiData() {
 		console.log(cityname);
 		return false;
 	}
-	if(!/^\d+$/.test(value)){//中英文
+	if(!/^\d+$/.test(value)){
 		console.log(value);
 		return false;
 	}
@@ -46,7 +46,6 @@ function addAqiData() {
  */
 function renderAqiList() {
 	var table=document.getElementById("aqi-table");
-	//aqiData.forEach(aa); aqiData是对象，没有改方法
 	var tr="<tr><td>城市</td><td>空气质量</td><td>操作</td></tr>";
 	for(var name in aqiData){
 		tr+=
@@ -74,9 +73,7 @@ function addBtnHandle() {
 function delBtnHandle(event) {
 	// do sth.
 	if(event.target.tagName.toLowerCase()=="button"){
-		//var name=event.target.parentNode.parentNode.getElementsByTagName("td")[0].innerHTML;
 		var name=event.target.getAttribute("data-name");
-		//console.log(name);
 		delete aqiData[name];
 		renderAqiList();
 	}

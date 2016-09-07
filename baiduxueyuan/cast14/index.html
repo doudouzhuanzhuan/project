@@ -33,22 +33,19 @@
 		/**
 		 * 1.基础版本
 		 */
-		// list=document.getElementById("aqi-list");
-		// aqiData.sort(function(oldvar,newvar){
-		// 	return newvar[1]-oldvar[1];
-		// });
-		// listCon="";
-		// index=0;
-		// for (var name in aqiData){
-		// 	if(aqiData[name][1]>60){
-		// 		listCon+="<li>第"+item[index]+"名："+aqiData[name][0]+":"+aqiData[name][1]+"</li>\n";
-		// 	}else{
-		// 		listCon+="<li style='color:gray;'>第"+item[index]+"名："+aqiData[name][0]+":"+aqiData[name][1]+"</li>\n";
-		// 	}
-		// 	index++;
-		// }
-		// list.innerHTML=listCon;
-		// console.log(listCon);
+//		 var list=document.getElementById("aqi-list");
+//		 aqiData.sort(function(prev,next){
+//		 	return next[1]-prev[1];
+//		 });
+//		 var listCon="";
+//		 for (var name in aqiData){
+//		 	if(aqiData[name][1]>60){
+//		 		listCon+="<li>第"+item[name]+"名："+aqiData[name][0]+":"+aqiData[name][1]+"</li>\n";
+//		 	}else{
+//		 		listCon+="<li style='color:gray;'>第"+item[name]+"名："+aqiData[name][0]+":"+aqiData[name][1]+"</li>\n";
+//		 	}
+//		 }
+//		 list.innerHTML=listCon;
 		/**
 		 * /1.基础版本
 		 * 可以根据污染等级分配不同的样式
@@ -63,7 +60,7 @@
 		aqiData.sort(function(a,b){
 			return b[1]-a[1];
 		});
-		var listDOM=document.createElement("ul");
+		var wrapper_li=document.createDocumentFragment();
 
 		aqiData.forEach(function(element,index){
 			var liText=document.createTextNode("第"+item[index]+"名："+element[0]+","+element[1]);
@@ -72,15 +69,15 @@
 				liDOM.setAttribute("style","color:orange");
 			}
 			liDOM.appendChild(liText);
-			listDOM.appendChild(liDOM);
-			console.log(listDOM.innerHTML);
+			wrapper_li.appendChild(liDOM);
 		})
-		var titleH3=document.getElementsByTagName("h3")[0];
-
-		document.body.insertBefore(listDOM,titleH3.nextSibling);
+		document.getElementById("aqi-list").appendChild(wrapper_li);
 		/**
 		 * /2.forEach版
 		 * 虽然可以用forEach循环数组，但是他的功能主要是对数组的每一项执行函数，有点名不符实
+		 * 9/7
+		 * 	学习了文档片段,正好用在这里
+		 *
 		 */
 	})();
 	</script>

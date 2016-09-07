@@ -11,25 +11,18 @@ function addeventListener(obj,type,fun,boolean){
         obj["on"+type]=fun;
     }
 }
-
-var from=document.getElementById("from");
 var content=document.getElementById("content");
 var but=document.getElementsByTagName("button");
 var obj={
     str:[],
-    leftPush:function(){
+    Push:function(pash){
         var value=document.getElementsByName("sum")[0].value;
         if(/^\d+$/.test(value)){
-            this.str.unshift(value);
-        }else{
-            console.log("请输入整数");
-        }
-        this.change();
-    },
-    rightPush:function(){
-        var value=document.getElementsByName("sum")[0].value;
-        if(/^\d+$/.test(value)){
-            this.str.push(value);
+            if(pash=="left"){
+                this.str.unshift(value);
+            }else{
+                this.str.push(value);
+            }
         }else{
             console.log("请输入整数");
         }
@@ -52,7 +45,6 @@ var obj={
         addeverybox();
     },
     remove:function(item){
-        console.log("run?");
         this.str.splice(item,1);
         this.change();
     }
@@ -60,10 +52,6 @@ var obj={
 function addeverybox(){
     var p=content.getElementsByTagName("p");
     for(var item=0;item<p.length;item++){
-        /*addEventListener(p[i],"click",function(){//要使用闭包
-            console.log("run?");
-            obj.remove(i);
-        },false)*/
         addeventListener(p[item],"click",function(item){
             return function(){return obj.remove(item);};
         }(item),false);
@@ -98,7 +86,7 @@ function addeverybox(){
          */
     }
 }
-addeventListener(but[0],"click",function(){obj.leftPush()},false);//直接传入函数后leftPush中的this会变为点击对象
-addeventListener(but[1],"click",function(){obj.rightPush()},false);
+addeventListener(but[0],"click",function(){obj.Push("left")},false);//直接传入函数后leftPush中的this会变为点击对象
+addeventListener(but[1],"click",function(){obj.Push("right")},false);
 addeventListener(but[2],"click",function(){obj.leftPop()},false);
 addeventListener(but[3],"click",function(){obj.rightPop()},false);
