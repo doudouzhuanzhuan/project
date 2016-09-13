@@ -2,36 +2,67 @@ function $(name){
     return document.querySelector(name);
 }
 var root=$("#root");
+var index=0;
 function init(){
-    var list=[];
     $("#deep-loop").onclick=function(){
-        dl_Leep(root,list);
+        var list=[];
+        dl_fun(root,list);
         animateFun(list);
     }
-    // $("#wide-loop").onclick=wl_Loop();
-    // $("#deep-search").onclick=ds_Loop();
-    // $("#wide-search").onclick=ws_Loop();
+    $("#wide-loop").onclick=function(){
+        var list=[];
+        index=0;
+        wl_fun(root,list);
+        animateFun(list);
+    }
+    $("#deep-search").onclick=function(){
+        var key=$("input").value;
+        var list=[];
+        dl_fun(root,list);
+        animateFun(list,key);
+    }
+    $("#wide-search").onclick=function(){
+        var key=$("input").value;
+        var list=[];
+        wl_fun(root,list);
+        animateFun(list,key);
+    }
 
 }
-function dl_Leep(obj,list){
+function dl_fun(obj,list){
     if(obj){
         list.push(obj);
         for(var i=0;i<obj.children.length;i++){
-            dl_Leep(obj.children[i],list);
+            dl_fun(obj.children[i],list);
         }
     }
 }
-function animateFun(list){
-    var i=1;
-    list[i].style.backgroundColor="#ff7a0e";
-    var timer=setInterval(function(){
-        if(i>=list.length){
-            list[i-1].style.backgroundColor="#fff";
+function wl_fun(obj,list){
+    if(obj){
+        list.push(obj);
+        wl_fun(obj.nextElementSibling,list);
+        obj=list[index++];
+        wl_fun(obj.children[0],list);
+    }
+}
+function animateFun(list,key){
+    var i=0;
+    timer=setInterval(function(){
+        if(i >= list.length){
             clearInterval(timer);
+            list[i-1].style.backgroundColor="#fff";
             return;
         }
-        list[i-1].style.backgroundColor="#fff";
-        list[i].style.backgroundColor="#ff7a0e";
+        if(i !== 0){
+            list[i-1].style.backgroundColor="#fff";
+        }
+        if(key !== undefined && key !== "" && list[i].childNodes[0].nodeValue.trim() === key){
+            list[i].style.backgroundColor="#f00";
+            clearInterval(timer);
+            return;
+        }else{
+            list[i].style.backgroundColor="#ff7a0e";
+        }
         i++;
     },200)
 

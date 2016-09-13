@@ -19,7 +19,7 @@ function traverseDF(node,nodeList){
 }
 
 //广度优先遍历
-function traverseBF(node, nodeList) {
+function traverseBF(node, nodeList) {;
     if (node) {
         nodeList.push(node);
         traverseBF(node.nextElementSibling, nodeList);
