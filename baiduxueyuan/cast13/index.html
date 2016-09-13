@@ -40,17 +40,19 @@
 		 * 2.组件化，验证，代码格式化
 		 */
 
-//		 var apiInput = document.getElementById("aqi-input");
-//		 var apiDisplay = document.getElementById("aqi-display");
-//		 apiInput.onkeyup = function (event){
-//			 var val = parseInt(apiInput.value);
-//			 if(!isNaN(val) && val>=0 && val<=1000 ){
-//				 apiDisplay.innerHTML = val;
-//			 }else{
-//				 apiDisplay.innerHTML = "请输入0～1000之间的整数";
-//			 }
-//			 console.log(event.keyCode);
-//		 }
+		 var apiInput = document.getElementById("aqi-input");
+		 var apiDisplay = document.getElementById("aqi-display");
+		 apiInput.onkeyup = function (event){
+			 console.log(event.keyCode);
+			 console.log(apiInput.value)
+			 var val = parseInt(apiInput.value);
+			 if(!isNaN(val) && val>=0 && val<=1000 ){
+				 apiDisplay.innerHTML = val;
+			 }else{
+				 apiDisplay.innerHTML = "请输入0～1000之间的整数";
+			 }
+
+		 }
 
 
 		/**
@@ -73,16 +75,16 @@
 		  * 使用textContent代替innerHTML更符合用意（转移文本而非HTML代码）
 		  * parseInt()会忽略字符串首位空白符，且解析到非数字字符时自动截断（会返回NaN)
 		  */
-		 function change(){
-		 	var inputvalue=parseInt(document.getElementById("aqi-input").value);
-		 	document.getElementById("aqi-display").textContent=(inputvalue<=500&&inputvalue>=0)?inputvalue:"请输入0～500之间的整数";
-		 }
-		 var bottom=document.getElementById("button");
-		 if (bottom.addEventListener) {
-		   bottom.addEventListener('click', change, false);
-		 } else if (bottom.attachEvent)  {
-		   bottom.attachEvent('onclick', change);
-		 }
+//		 function change(){
+//		 	var inputvalue=parseInt(document.getElementById("aqi-input").value);
+//		 	document.getElementById("aqi-display").textContent=(inputvalue<=500&&inputvalue>=0)?inputvalue:"请输入0～500之间的整数";
+//		 }
+//		 var bottom=document.getElementById("button");
+//		 if (bottom.addEventListener) {
+//		   bottom.addEventListener('click', change, false);
+//		 } else if (bottom.attachEvent)  {
+//		   bottom.attachEvent('onclick', change);
+//		 }
 	})();
 	</script>
 </body>

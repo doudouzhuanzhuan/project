@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-cmn">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		div{
+			display: flex;
+			padding: 30px;
+			width: 100%;
+			margin: 0 5px;
+		}
+		.c0{
+			border: 2px solid #000;
+			width: 1100px;
+			height: 200px;
+			margin: 30px;
+			background: #fffffa;
+		}
+		.c1{
+			border: 2px solid #075ccb;
+			background: #faffff;
+		}
+		.c2{
+			border: 2px solid #ff00d4;
+			background: #fffaff;
+		}
+		.c3{
+			border: 2px solid #ff3d00;
+			background: #fafaff;
+		}
+		button{
+			background: #ff7a0e;
+			color: #ffffff;
+			border: none;
+			margin: 20px;
+			padding: 6px 20px;
+		}
+		button:focus{
+			background: #ff0000;
+		}
+	</style>
+</head>
+<body>
+	<div class="c0">
+		<div class="c1">
+			<div class="c2">
+				<div class="c3" data-item="c3-left"></div>
+				<div class="c3"></div>
+			</div>
+			<div class="c2">
+				<div class="c3"></div>
+				<div class="c3"></div>
+			</div>
+		</div>
+		<div class="c1">
+			<div class="c2">
+				<div class="c3"></div>
+				<div class="c3"></div>
+			</div>
+			<div class="c2">
+				<div class="c3"></div>
+				<div class="c3"></div>
+			</div>
+		</div>
+	</div>
+	<div>
+		<button id="befor">前</button>
+		<button id="center">中</button>
+		<button id="after">后</button>
+	</div>
+	<script src="task.js"></script>
+</body>
+</html>

@@ -136,7 +136,7 @@ var viewCenter=(function(){
         /** 鼠标移出 **/
         mouseout:function(){
             if(event.target.tagName.toLowerCase()=="p"){
-                event.target.innerHTML=event.target.innerHTML.replace(/^(删除:)+/,"");
+                event.target.innerHTML=event.target.innerHTML.replace(/^(删除:)/,"");
             }
         }
     }
