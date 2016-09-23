@@ -1,3 +1,58 @@
 fieldset{
 	margin-bottom: 20px;
 }
+ul{
+	font-size: 0;
+	background: #f7f7f7;
+	width: 1100px;
+	margin: auto;
+	text-align: center;
+	padding: 10px;
+}
+li{
+	display: inline-block;
+	vertical-align: bottom;
+	outline: 1px dashed #eee;
+}
+.day li{
+	width: 7px;
+	margin: 0 2px;
+	background: #cba8ff;
+	cursor: pointer;
+	position: relative;
+}
+.week li{
+	width: 20px;
+	margin: 0 10px;
+	background: #cba8ff;
+	cursor: pointer;
+	position: relative;
+}
+.month li{
+	width: 100px;
+	margin: 0 20px;
+	background: #cba8ff;
+	cursor: pointer;
+	position: relative;
+}
+body li:hover{
+	background: #ff7a0e;
+	z-index: 2;
+}
+li div{
+	position: absolute;
+	padding: 20px;
+	top: -53px;
+	line-height: 1.3;
+	margin-left: 4px;
+	left: -70px;
+	width: 100px;
+	border-radius: 6px;
+	font-size: 14px;
+	text-align: center;
+	box-shadow: #555 0px 0px 10px;
+	display: none;
+}
+li:hover div{
+	display: block;
+}

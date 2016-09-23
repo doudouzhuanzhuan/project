@@ -27,7 +27,6 @@ function init(){
         wl_fun(root,list);
         animateFun(list,key);
     }
-
 }
 function dl_fun(obj,list){
     if(obj){
@@ -65,6 +64,5 @@ function animateFun(list,key){
         }
         i++;
     },200)
-
 }
 init();
