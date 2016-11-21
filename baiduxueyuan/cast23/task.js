@@ -1,6 +1,12 @@
+/**
+ * 通用组件
+ */
 function $(name){
     return document.querySelector(name);
 }
+/**
+ * 初始化
+ */
 var root=$("#root");
 var index=0;
 function init(){
@@ -28,6 +34,9 @@ function init(){
         animateFun(list,key);
     }
 }
+/**
+ * 执行函数
+ */
 function dl_fun(obj,list){
     if(obj){
         list.push(obj);
@@ -63,6 +72,6 @@ function animateFun(list,key){
             list[i].style.backgroundColor="#ff7a0e";
         }
         i++;
-    },200)
+    },700)
 }
 init();
